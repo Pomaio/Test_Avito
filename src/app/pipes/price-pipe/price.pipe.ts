@@ -6,6 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PricePipe implements PipeTransform {
 
   transform(value: number, args?: number): string {
+    if (value === undefined) { return 'неизвестно'; }
     return `${value}`.split('')
       .reduce((sum, elem, index, arr) => sum += ((arr.length - index) % 3 === 0) ? ' ' + elem : elem);
   }

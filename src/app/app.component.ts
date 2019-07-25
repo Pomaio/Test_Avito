@@ -8,14 +8,16 @@ import {Iproduct} from './model/idata_prod';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 69000;
-  info: any;
+  info = [];
+  itemInPage = 20;
   constructor(private http: ApiWorkService) {
   }
   ngOnInit() {
-    this.Subs();
+    this.Subs(1);
   }
-   Subs() {
-     this.http.getProdAx(1).subscribe((d) => this.info = d.data);
+   Subs(page: number) {
+     for (let i = 0; i < this.itemInPage; i++) {
+       this.http.getProdAx(i).subscribe((d) => this.info.push(d.data));
+     }
   }
 }

@@ -4,18 +4,6 @@
   </h1>
 <app-filter></app-filter>
 <app-sort></app-sort>
-<div>{{info.title}} - nwnwnnwn</div>
 <div class="cards">
-  <app-card class="item"></app-card>
-  <app-card class="item"></app-card>
-  <app-card class="item"></app-card>
-  <app-card class="item"></app-card>
-  <app-card class="item"></app-card>
-  <app-card class="item"></app-card>
-  <app-card class="item"></app-card>
-  <app-card class="item"></app-card>
-  <app-card class="item"></app-card>
-  <app-card class="item"></app-card>
-  <app-card class="item"></app-card>
-  <app-card class="item"></app-card>
+  <app-card class="item" *ngFor="let kek of info" [data]="kek"></app-card>
 </div>

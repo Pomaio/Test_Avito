@@ -1,19 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {Iproduct} from '../../model/idata_prod';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
+export class CardComponent implements OnInit, AfterViewInit {
 
-  title: string = 'универсал BMX';
-  amountPicture: number = 3;
-  price: number = 983823;
+  @Input() data: any;
+  Info: Iproduct;
   date: string = Date();
-  seller: string = 'дед пыхто';
+  cardDom: any;
+
+
   constructor() { }
   ngOnInit() {
+    this.Info = this.data;
+    console.log(this.data);
+    console.log(this.Info.pictures[0], this.Info.id, this.Info.price);
+
+  }
+
+  ngAfterViewInit() {
+    this.cardDom = document.getElementById(`${this.Info.id}`).src = this.Info.pictures[0];
+    console.log(this.cardDom, `${this.Info.id}`);
   }
 
 }
