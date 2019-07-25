@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Iproduct} from '../model/idata_prod';
+import {map} from 'rxjs/operators';
 
 const BASE_URL = 'https://avito.dump.academy/products';
 
@@ -6,21 +10,11 @@ const BASE_URL = 'https://avito.dump.academy/products';
 
 export class ApiWorkService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getProducts(): string {
-    const xhr = new XMLHttpRequest();
-    let data;
-    xhr.open('GET', `${BASE_URL}/1`, true);
-    xhr.send();
-    xhr.onreadystatechange = function() { // (3)
-      if (xhr.status !== 200) {
-        console.log(xhr.status + ':' + xhr.statusText);
-      } else {
-        console.log(xhr.response);
-        return (xhr.response);
-      }
-    };
-    return xhr.responseText;
+  getProdAx(index: number): Observable<any> {
+    return this.http
+      .get(`${BASE_URL}/${index}`);
   }
+
 }
