@@ -4,7 +4,9 @@
   height: 480px;
 }
 .card-header{
-  padding: 5px;
+  padding: 6px;
+  margin: 1px;
+  border-bottom: 2px solid rgba(23,21,21,0.75);
 }
 .card-title{
   text-align: center;

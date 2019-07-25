@@ -12,6 +12,7 @@ export class CardComponent implements OnInit, AfterViewInit {
   Info: Iproduct;
   date: string = Date();
   cardDom: any;
+  id_image = '_i';
 
 
   constructor() { }
@@ -23,8 +24,16 @@ export class CardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.cardDom = document.getElementById(`${this.Info.id}`).src = this.Info.pictures[0];
+    document.getElementById(`${this.Info.id}${this.id_image}`).src = this.Info.pictures[0];
+    document.getElementById(`${this.Info.id}`).className += ' ' + this.addBorder(this.Info.category);
     console.log(this.cardDom, `${this.Info.id}`);
   }
+  addBorder(category: string) {
+     if (category === 'immovable') { return 'border-danger'; }
+     if (category === 'cameras') { return 'border-success'; }
+     if (category === 'auto') { return 'border-warning'; }
+     if (category === 'laptops') { return 'border-info'; }
 
+
+  }
 }
