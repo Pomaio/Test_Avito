@@ -1,0 +1,17 @@
+h1{
+ text-align: center;
+  margin-top: 20px;
+}
+:host{
+  display: block;
+  padding: 0 8px;
+}
+.cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  grid-template-rows: auto;
+  grid-gap: 10px;
+}
+.item{
+  justify-self: center;
+}

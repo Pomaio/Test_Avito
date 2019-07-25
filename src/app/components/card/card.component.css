@@ -1,0 +1,33 @@
+:host{
+  display: block;
+  width: 320px;
+  height: 480px;
+}
+.card-header{
+  padding: 5px;
+}
+.card-title{
+  text-align: center;
+}
+.card-body{
+  padding: 12px;
+}
+p{
+  margin-bottom: 7px;
+}
+.badge{
+  display: block;
+  height: 40px;
+  width: 40px;
+
+  top: 0;
+  position: absolute;
+
+  background: black;
+  border: 1px solid grey;
+  border-radius: 0 0 100% 0 / 0 0 100% 0;
+
+  line-height: 25px;
+  padding: 3px 13px;
+  text-align: left;
+}
