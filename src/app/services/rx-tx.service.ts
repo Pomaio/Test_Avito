@@ -6,7 +6,9 @@ import {Subject} from 'rxjs';
 })
 export class RxTxService {
 
-  txfilterProp: Subject<any> = new Subject();
+  txFilterCategory: Subject<any> = new Subject();
+  txFilterPrice: Subject<any> = new Subject();
+  txSort: Subject<any> = new Subject();
 
   constructor() { }
 }

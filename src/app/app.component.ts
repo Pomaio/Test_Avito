@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiWorkService} from './services/api-products.service';
-import {Iproduct} from './model/idata_prod';
+import {ApiConnect} from './services/api-connect.service';
 import {RxTxService} from './services/rx-tx.service';
 
 @Component({
@@ -14,12 +13,15 @@ export class AppComponent implements OnInit {
   info_fil_sort = [];
   itemInPage = 20;
   page = 1;
-  constructor(private http: ApiWorkService, private _service: RxTxService) {
-    this._service.txfilterProp.subscribe((data) => this.filterCategory(data));
+  price_limit = ['', ''];
+  constructor(private http: ApiConnect, private _service: RxTxService) {
+    this._service.txFilterCategory.subscribe((data) => this.filterCategory(data));
+    this._service.txFilterPrice.subscribe((prices) => this.filterPrice(prices));
+    this._service.txSort.subscribe((sort) => this.sortProducts(sort));
   }
   ngOnInit() {
     this.getDATA(this.page);
-    this.info_filter = this.info;
+    this.info_fil_sort = this.info;
   }
    getDATA(page: number) {
      for (let i = 0; i < this.itemInPage; i++) {
@@ -48,6 +50,35 @@ export class AppComponent implements OnInit {
         this.info_filter = this.info.filter((elem) => elem.category === name);
         break;
     }
-    console.log(this.info);
+    this.filterPrice(this.price_limit);
+  }
+  filterPrice(limits: string[]) {
+    this.price_limit = limits;
+    if (limits[0] !== '' || limits[1] !== '') {
+      if (limits[0] !== '') {
+        this.info_fil_sort = this.info_filter
+          .filter((elem) => (elem.price === undefined) || (elem.price >= limits[0]));
+        if (limits[1] !== '') {
+          this.info_fil_sort = this.info_fil_sort
+            .filter((elem) => (elem.price === undefined) || (elem.price <= limits[1]));
+        }
+      }
+      if (limits[1] !== '') {
+        this.info_fil_sort = this.info_filter
+          .filter((elem) => (elem.price === undefined) || (elem.price <= limits[1]));
+      }
+    } else { this.info_fil_sort = this.info_filter; }
+  }
+  sortProducts(type: string) {
+    switch (type) {
+      case 'popular':
+        this.info_fil_sort.sort(function(a, b) { return a.id - b.id; });
+        break;
+      case 'price':
+        this.info_fil_sort.sort(function(a, b) { return a.price - b.price; });
+        break;
+      default:
+        break;
+    }
   }
 }

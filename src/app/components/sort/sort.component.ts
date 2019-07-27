@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RxTxService} from '../../services/rx-tx.service';
 
 @Component({
   selector: 'app-sort',
@@ -7,13 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SortComponent implements OnInit {
 
-  constructor() { }
+  constructor(private  _service: RxTxService) { }
 
   ngOnInit() {
   }
 
   onClick(category: string) {
-
-
+    this._service.txSort.next(category);
   }
 }

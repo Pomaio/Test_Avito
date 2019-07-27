@@ -13,7 +13,7 @@
       <h4 class="card-title" >{{Info.title | lengthPipe}}</h4>
       <p>Цена: {{Info.price | pricePipe}} RUB</p>
       <p>Дата: {{date | date:'dd MMMM HH:mm'}}</p>
-      <p>Продавец: {{Info.relationships | json}}</p>
+      <p>Продавец: {{seller}}  ★{{seller_rat}}</p>
     </div>
   </div>
 

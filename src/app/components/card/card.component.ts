@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Iproduct} from '../../model/idata_prod';
+import {ApiConnect} from '../../services/api-connect.service';
 
 @Component({
   selector: 'app-card',
@@ -14,14 +15,19 @@ export class CardComponent implements OnInit, AfterViewInit {
   cardDom: any;
   id_image = '_i';
   favor = '';
+  seller = '';
+  seller_rat = '';
 
-
-  constructor() { }
+  constructor(private http: ApiConnect) { }
   ngOnInit() {
     this.Info = this.data;
     this.favor = (localStorage.getItem('favor')
       .split(',').some((num) => num === this.Info.id))
       ? 'favor' : '';
+    this.http.getSeller(this.Info.relationships.seller).subscribe((data) => {
+      this.seller = data.data.name;
+      this.seller_rat = data.data.rating;
+    });
   }
 
   ngAfterViewInit() {

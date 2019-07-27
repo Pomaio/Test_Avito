@@ -20,21 +20,21 @@
                  formControlName="min_price"
                  required
                  pattern="^[ 0-9]+$"
-                 [class.is-invalid]="min_price.invalid && min_price.touched &&(min_price.value !== '')"
+                 [class.is-invalid]="min_price.invalid &&(min_price.value !== '')"
                  placeholder="0">
         </div>
         <label for="to_price" class="col-sm-2 col-form-label">до</label>
         <div class="col-sm-10">
           <input type="text"
-                 class="form-control-plaintext"
+                 class="form-control form-control-plaintext"
                  id="to_price"
                  formControlName="max_price"
                  pattern="^[ 0-9]+$"
-                 [class.is-invalid]="max_price.invalid && max_price.touched &&(max_price.value !== '')"
+                 [class.is-invalid]="max_price.invalid &&(max_price.value !== '')"
                  placeholder="бесконечности">
         </div>
       </div>
     </form>
-    <button type="button" class="btn btn-primary">GO</button>
+    <button type="button" class="btn btn-primary" (click)="Submite()">GO</button>
   </div>
 </div>

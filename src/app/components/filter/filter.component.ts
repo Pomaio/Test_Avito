@@ -12,7 +12,6 @@ export class FilterComponent implements OnInit {
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private _service: RxTxService) {
-
   }
 
   ngOnInit() {
@@ -20,20 +19,23 @@ export class FilterComponent implements OnInit {
       min_price: [''],
       max_price: ['']
     });
-    this.form.valueChanges.subscribe(data => console.log('Form changes', data));
   }
 
   onClick(category: string) {
-     this._service.txfilterProp.next(category);
+     this._service.txFilterCategory.next(category);
   }
 
-  Change(min: string, value: any) {
-    console.log('kek');
-  }
   get min_price() {
     return this.form.get('min_price');
   }
   get max_price() {
     return this.form.get('max_price');
   }
+
+  Submite() {
+    if (this.min_price.valid || this.max_price.valid) {
+      this._service.txFilterPrice.next([this.form.value.min_price, this.form.value.max_price]);
+    }
+  }
+
 }

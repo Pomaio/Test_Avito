@@ -6,7 +6,7 @@ import { CardComponent } from './components/card/card.component';
 import {PipesModule} from './pipes/pipes.module';
 import { FilterComponent } from './components/filter/filter.component';
 import { SortComponent } from './components/sort/sort.component';
-import {ApiWorkService} from './services/api-products.service';
+import {ApiConnect} from './services/api-connect.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RxTxService} from './services/rx-tx.service';
@@ -22,7 +22,7 @@ import {RxTxService} from './services/rx-tx.service';
     BrowserModule,
     PipesModule, HttpClientModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [ApiWorkService, FormBuilder, RxTxService],
+  providers: [ApiConnect, FormBuilder, RxTxService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
