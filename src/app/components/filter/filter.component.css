@@ -1,0 +1,23 @@
+.filter{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.btn-group{
+}
+.form-group{
+  margin-bottom: 0;
+}
+.price_h{
+  display: flex;
+  align-items: center;
+}
+.price{
+   border: 1px solid rgba(0, 0, 0, 0.3);
+  margin-left: 2px;
+  border-radius: 5px;
+  width: 250px;
+}
+.col-sm-10{
+  padding: 0;
+}

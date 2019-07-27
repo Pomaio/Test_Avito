@@ -1,8 +1,13 @@
-<div  [id]="Info.id" class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+<div  [id]="Info.id"
+      class="card text-white bg-primary mb-3"
+      style="max-width: 20rem;" (dblclick)="Ifavorites()">
+
   <div class="card-header" >
     <img [id]="Info.id+id_image" width="100%" height="100%" alt="product Image" src=" ">
   </div>
+
   <div class="badge">{{Info.pictures.length}}</div>
+
   <div class="card-body">
     <div class="card-text">
       <h4 class="card-title" >{{Info.title | lengthPipe}}</h4>
@@ -11,4 +16,6 @@
       <p>Продавец: {{Info.relationships | json}}</p>
     </div>
   </div>
+
+  <div [className]="favor"></div>
 </div>

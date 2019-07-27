@@ -13,20 +13,20 @@ export class CardComponent implements OnInit, AfterViewInit {
   date: string = Date();
   cardDom: any;
   id_image = '_i';
+  favor = '';
 
 
   constructor() { }
   ngOnInit() {
     this.Info = this.data;
-    console.log(this.data);
-    console.log(this.Info.pictures[0], this.Info.id, this.Info.price);
-
+    this.favor = (localStorage.getItem('favor')
+      .split(',').some((num) => num === this.Info.id))
+      ? 'favor' : '';
   }
 
   ngAfterViewInit() {
-    document.getElementById(`${this.Info.id}${this.id_image}`).src = this.Info.pictures[0];
+    document.getElementById(`${this.Info.id}${this.id_image}`).setAttribute('src', this.Info.pictures[0]); // = this.Info.pictures[0];
     document.getElementById(`${this.Info.id}`).className += ' ' + this.addBorder(this.Info.category);
-    console.log(this.cardDom, `${this.Info.id}`);
   }
   addBorder(category: string) {
      if (category === 'immovable') { return 'border-danger'; }
@@ -35,5 +35,20 @@ export class CardComponent implements OnInit, AfterViewInit {
      if (category === 'laptops') { return 'border-info'; }
 
 
+  }
+
+  Ifavorites() {
+    if (this.favor === '') {
+      this.favor = 'favor';
+      let favorites = localStorage.getItem('favor');
+      favorites = (favorites == null) ? '' : favorites + ',';
+      localStorage.setItem('favor', favorites + this.Info.id);
+    } else {
+      this.favor = '';
+      let favorites = localStorage.getItem('favor');
+      favorites = favorites.split(',')
+        .filter((num) => num !== this.Info.id).join(',');
+      localStorage.setItem('favor', favorites);
+    }
   }
 }

@@ -12,4 +12,8 @@ export class SortComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick(category: string) {
+
+
+  }
 }

@@ -33,3 +33,14 @@ p{
   padding: 3px 13px;
   text-align: left;
 }
+.favor {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 0;
+  height: 0;
+  border-width: 45px 25px 25px;
+  border-style: solid;
+  border-color: #f89406 #f89406 transparent;
+}

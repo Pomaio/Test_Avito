@@ -1,12 +1,13 @@
 h1{
  text-align: center;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 :host{
   display: block;
-  padding: 0 8px;
+  padding: 0 20px;
 }
 .cards{
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   grid-template-rows: auto;
@@ -14,4 +15,10 @@ h1{
 }
 .item{
   justify-self: center;
+}
+.footer{
+  display: flex;
+  margin: 20px auto;
+  justify-content: center;
+
 }
